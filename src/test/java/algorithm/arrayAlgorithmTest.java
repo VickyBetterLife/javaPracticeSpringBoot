@@ -31,4 +31,25 @@ public class arrayAlgorithmTest {
         int[] array4 = {};
         Assert.assertEquals(re.removeElement(array4,3),0);
     }
+
+    @Test
+    public void PlusOneTest()
+    {
+        PlusOne po = new PlusOne();
+        int[] array1 = {1,2,9};
+        int[] result = po.plusOne_method2(array1);
+        Assert.assertEquals(3,result.length);
+
+    }
+
+    @Test
+    public void PascalTriangle()
+    {
+
+        PascalTriangle po = new PascalTriangle();
+
+        po.generate(5);
+
+
+    }
 }
