@@ -43,13 +43,21 @@ public class arrayAlgorithmTest {
     }
 
     @Test
-    public void PascalTriangle()
+    public void PascalTriangleTest()
     {
 
         PascalTriangle po = new PascalTriangle();
 
         po.generate(5);
 
+
+    }
+
+    @Test
+    public void findPeakElementTest(){
+        FindPeakElement fpe = new FindPeakElement();
+        int[] array1 = {1,2};
+        Assert.assertEquals(1,fpe.findPeakElement(array1));
 
     }
 }

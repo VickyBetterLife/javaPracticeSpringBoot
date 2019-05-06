@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47905af7-ec9a-4078-bad5-e0285dee5550" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/algorithm/FindPeakElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algorithm/findMinimumInRotatedSortedArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algorithm/findMinimumInRotatedSortedArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/algorithm/arrayAlgorithmTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/algorithm/arrayAlgorithmTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/algorithm/arrayAlgorithmTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="286">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,17 +90,25 @@
               <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4332#4341#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/algorithm/findMinimumInRotatedSortedArray.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+            <state relative-caret-position="374">
+              <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/algorithm/FindPeakElement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="45" column="32" lean-forward="true" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -128,11 +138,12 @@
         <option value="$PROJECT_DIR$/src/main/java/algorithm/RemoveElement.java" />
         <option value="$PROJECT_DIR$/src/main/java/algorithm/RemoveDuplicatesfromSortedArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/algorithm/PlusOne.java" />
-        <option value="$PROJECT_DIR$/src/test/java/algorithm/arrayAlgorithmTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/algorithm/PascalTriangle.java" />
         <option value="$PROJECT_DIR$/src/main/java/algorithm/TwoSum.java" />
         <option value="$PROJECT_DIR$/src/main/java/algorithm/TwoSumAndThreeSum.java" />
         <option value="$PROJECT_DIR$/src/main/java/algorithm/findMinimumInRotatedSortedArray.java" />
+        <option value="$PROJECT_DIR$/src/test/java/algorithm/arrayAlgorithmTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/algorithm/FindPeakElement.java" />
       </list>
     </option>
   </component>
@@ -160,16 +171,6 @@
           <item name="com.javaPractice.spingBoot" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="com.javaPractice.spingBoot" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="com.javaPractice.spingBoot" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
-        </path>
       </expand>
       <select />
     </treeState>
@@ -186,17 +187,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="javaPracticeSpringBoot" type="58d84e3e:PackageViewProjectNode" />
-              <item name="javaPracticeSpringBoot" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -251,9 +241,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="algorithm" type="462c0819:PsiDirectoryNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
             <path>
-              <item name="javaPracticeSpringBoot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="javaPracticeSpringBoot" type="58d84e3e:PackageViewProjectNode" />
+              <item name="javaPracticeSpringBoot" type="616d4139:PackageViewModuleNode" />
             </path>
           </expand>
           <select />
@@ -262,7 +259,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556431876452" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557119879941" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.testRunning" />
   </component>
@@ -278,7 +275,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.arrayAlgorithmTest.PascalTriangle">
+  <component name="RunManager" selected="JUnit.arrayAlgorithmTest.findPeakElementTest">
     <configuration name="arrayAlgorithmTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="javaPracticeSpringBoot" />
       <extension name="coverage">
@@ -325,8 +322,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="arrayAlgorithmTest.RemoveElementTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="javaPracticeSpringBoot" />
+    <configuration name="arrayAlgorithmTest.findPeakElement" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.javaPractice.spingBoot" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="algorithm.*" />
@@ -335,7 +332,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="algorithm" />
       <option name="MAIN_CLASS_NAME" value="algorithm.arrayAlgorithmTest" />
-      <option name="METHOD_NAME" value="RemoveElementTest" />
+      <option name="METHOD_NAME" value="findPeakElement" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="arrayAlgorithmTest.findPeakElementTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.javaPractice.spingBoot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="algorithm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="algorithm" />
+      <option name="MAIN_CLASS_NAME" value="algorithm.arrayAlgorithmTest" />
+      <option name="METHOD_NAME" value="findPeakElementTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -343,10 +356,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.arrayAlgorithmTest.findPeakElementTest" />
+        <item itemvalue="JUnit.arrayAlgorithmTest.findPeakElement" />
         <item itemvalue="JUnit.arrayAlgorithmTest.PascalTriangle" />
         <item itemvalue="JUnit.arrayAlgorithmTest.PlusOneTest" />
         <item itemvalue="JUnit.arrayAlgorithmTest" />
-        <item itemvalue="JUnit.arrayAlgorithmTest.RemoveElementTest" />
       </list>
     </recent_temporary>
   </component>
@@ -364,12 +378,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="arrayAlgorithmTest - 2019.04.18 at 12h 35m 50s.xml">
-      <configuration name="arrayAlgorithmTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="arrayAlgorithmTest - 2019.04.18 at 12h 39m 16s.xml">
-      <configuration name="arrayAlgorithmTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="arrayAlgorithmTest_PlusOneTest - 2019.04.22 at 09h 07m 24s.xml">
       <configuration name="arrayAlgorithmTest.PlusOneTest" configurationId="JUnit" />
     </history-entry>
@@ -394,12 +402,18 @@
     <history-entry file="arrayAlgorithmTest_PascalTriangle - 2019.04.22 at 14h 43m 16s.xml">
       <configuration name="arrayAlgorithmTest.PascalTriangle" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="arrayAlgorithmTest_findPeakElement - 2019.05.06 at 09h 35m 18s.xml">
+      <configuration name="arrayAlgorithmTest.findPeakElement" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="arrayAlgorithmTest_findPeakElementTest - 2019.05.06 at 09h 36m 25s.xml">
+      <configuration name="arrayAlgorithmTest.findPeakElementTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16791044" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24200426" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -408,12 +422,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.16251354" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3997833" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24377032" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.032502707" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.29577464" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.29577464" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32936078" />
@@ -441,6 +455,18 @@
           <line>8</line>
           <properties />
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/algorithm/FindPeakElement.java</url>
+          <line>13</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/algorithm/arrayAlgorithmTest.java</url>
+          <line>59</line>
+          <properties />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -484,16 +510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/algorithm/arrayAlgorithmTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/algorithm/PascalTriangle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -510,15 +526,31 @@
           <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4332#4341#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/algorithm/findMinimumInRotatedSortedArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        <state relative-caret-position="374">
+          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/algorithm/arrayAlgorithmTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/algorithm/FindPeakElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="45" column="32" lean-forward="true" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
         </state>
       </provider>
     </entry>
