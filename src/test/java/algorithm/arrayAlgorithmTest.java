@@ -1,10 +1,6 @@
 package algorithm;
 import org.junit.Assert;
 import org.junit.Test;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.runner.RunWith;
 //import org.springframework.boot.test.context.SpringBootTest;
 //import org.springframework.test.context.junit4.SpringRunner;
 //import org.springframework.test.context.web.WebAppConfiguration;
@@ -60,4 +56,13 @@ public class arrayAlgorithmTest {
         Assert.assertEquals(1,fpe.findPeakElement(array1));
 
     }
+
+    @Test
+    public void constructBianaryTreeTest(){
+        BinaryTree cbt = new BinaryTree();
+        int[] inorder = {4,2,5,1,6,3,7};
+        int[] postorder = {4,5,2,6,7,3,1};
+        cbt.constructTreeWithInorderAndPostOrder(inorder,postorder);
+    }
+
 }
