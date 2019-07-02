@@ -65,10 +65,10 @@ public class arrayAlgorithmTest {
         cbt.constructTreeWithInorderAndPostOrder(inorder,postorder);
     }
 
-    @Test
-    public void postOrder(){
-        int[] treeNodes = {1,null,2,3};
-
-    }
+//    @Test
+//    public void postOrder(){
+//        int[] treeNodes = {1,null,2,3};
+//
+//    }
 
 }

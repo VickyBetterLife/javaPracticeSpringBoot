@@ -1,6 +1,8 @@
 package algorithm;
 
 
+import sun.reflect.generics.tree.Tree;
+
 import java.util.*;
 
 /**
@@ -456,6 +458,41 @@ Return false.
     }
 
 
+    /*
+     Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
+     */
+
+    public List<List<Integer>> pathSumII(TreeNode root, int sum) {
+
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+
+        if (root == null)
+            return result;
+
+        reversePathSum(root, sum, new LinkedList<Integer>(), result);
+
+        return result;
+    }
+
+    public void reversePathSum(TreeNode root, int sum, Deque<Integer> sumList, List<List<Integer>> result) {
+        if (root == null)
+            return;
+
+        sumList.addLast(root.val);
+        int diff = sum - root.val;
+        if (diff == 0 && root.left == null && root.right == null) {
+            result.add(new ArrayList<Integer>(sumList));
+            //  return;
+        }
+
+        //        List<Integer> listLeft = new ArrayList<Integer>(sumList);
+        //        List<Integer> listRight = new ArrayList<Integer>(sumList);
+        reversePathSum(root.left, diff, sumList, result);
+        reversePathSum(root.right, diff, sumList, result);
+        sumList.removeLast();
+    }
+
+
     public List<Integer> binaryTreePreorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
         if (root == null)
@@ -479,27 +516,27 @@ Return false.
     }
 
     public List<Integer> binaryTreeInorderTraversal(TreeNode root) {
-            List<Integer> result = new ArrayList<Integer>();
-            if (root == null)
-                return result;
-
-            Stack<TreeNode> treeNodes = new Stack<TreeNode>();
-
-            TreeNode tmp = root;
-            while (tmp !=null || !treeNodes.isEmpty()) {
-
-                while (tmp != null) {
-                    treeNodes.add(tmp);
-                    tmp = tmp.left;
-                }
-
-                if(!treeNodes.isEmpty()){
-                    TreeNode lastNode = treeNodes.pop();
-                    result.add(lastNode.val);
-                    tmp = lastNode.right;
-                }
-            }
+        List<Integer> result = new ArrayList<Integer>();
+        if (root == null)
             return result;
+
+        Stack<TreeNode> treeNodes = new Stack<TreeNode>();
+
+        TreeNode tmp = root;
+        while (tmp != null || !treeNodes.isEmpty()) {
+
+            while (tmp != null) {
+                treeNodes.add(tmp);
+                tmp = tmp.left;
+            }
+
+            if (!treeNodes.isEmpty()) {
+                TreeNode lastNode = treeNodes.pop();
+                result.add(lastNode.val);
+                tmp = lastNode.right;
+            }
+        }
+        return result;
     }
 
     public List<Integer> binaryTreePostorderTraversal(TreeNode root) {
@@ -508,25 +545,28 @@ Return false.
             return result;
 
         Stack<TreeNode> treeNodes = new Stack<TreeNode>();
-        treeNodes.add(root);
+        treeNodes.push(root);
 
         TreeNode temp = root;
         TreeNode pre = null;
 
-        while(!treeNodes.isEmpty()){
+        while (!treeNodes.isEmpty()) {
 
             temp = treeNodes.peek();
 
-            if((temp.right == null && temp.left == null) || (pre!=null && (pre == temp.left || pre == temp.right))){
+            if ((temp.right == null && temp.left == null) || (pre != null && (pre == temp.left || pre == temp.right))) {
+                result.add(temp.val);
+                treeNodes.pop();
+                pre = temp;
+            } else {
+                if (temp.right != null) {
+                    treeNodes.push(temp.right);
+                }
 
-            }
-            while(temp.right!=null) {
-                treeNodes.add(temp.right);
-                temp = temp.right;
+                if (temp.left != null)
+                    treeNodes.push(temp.left);
             }
         }
-        while(!treeNodes.isEmpty())
-            result.add(treeNodes.pop().val);
         return result;
     }
 
@@ -541,27 +581,242 @@ Return false.
 
         TreeNode temp = root;
 
-        while(temp != null || !leftNodes.isEmpty()){
+        while (temp != null || !leftNodes.isEmpty()) {
             treeNodes.add(temp);
 
-            if(temp.left != null)
+            if (temp.left != null)
                 leftNodes.add(temp.left);
 
-            while(temp.right!=null) {
+            while (temp.right != null) {
                 treeNodes.add(temp.right);
                 temp = temp.right;
 
-                if(temp.left != null)
+                if (temp.left != null)
                     leftNodes.add(temp.left);
             }
 
-            if(!leftNodes.isEmpty())
+            if (!leftNodes.isEmpty())
                 temp = leftNodes.pop();
 
         }
 
-       while(!treeNodes.isEmpty())
-           result.add(treeNodes.pop().val);
+        while (!treeNodes.isEmpty())
+            result.add(treeNodes.pop().val);
         return result;
     }
+
+
+    /*
+    Given a binary tree
+struct TreeLinkNode {
+TreeLinkNode *left;
+TreeLinkNode *right;
+TreeLinkNode *next;
 }
+Populate each next pointer to point to its next right node. If there is no next right node, the next
+pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
+Note:
+You may only use constant extra space. You may assume that it is a perfect binary tree (ie, all
+leaves are at the same level, and every parent has two children). For example, Given the following
+perfect binary tree,
+1
+/ \
+2 3
+/ \ / \
+4 5 6 7
+After calling your function, the tree should look like:
+1 -> NULL
+/ \
+2 -> 3 -> NULL
+/ \ / \
+4->5->6->7 -> NULL
+     */
+    public Node PopulatingNextRightPointersinEachNode(Node root) {
+        if (root == null)
+            return null;
+
+        Queue<Node> nodes = new LinkedList<Node>();
+        Node pre = null;
+        nodes.add(root);
+
+
+        while (!nodes.isEmpty()) {
+            Node temp = nodes.remove();
+            if (nodes.isEmpty() || pre.right == temp) {
+                temp.next = null;
+                pre = temp;
+            } else
+                temp.next = nodes.peek();
+
+            if (temp.left != null) {
+                nodes.add(temp.left);
+                nodes.add(temp.right);
+            }
+
+        }
+
+        return root;
+    }
+
+
+    /*
+    the tree could be any binary tree.
+    1
+    / \
+    2 3
+    / \ \
+    4 5 7
+
+    After calling your function, the tree should look like:
+    1 -> NULL
+    / \
+    2 -> 3 -> NULL
+   / \    \
+  4-> 5 -> 7 -> NULL
+
+     not complete, give up now*/
+    public Node PopulatingNextRightPointersinEachNode2(Node root) {
+        if (root == null)
+            return null;
+
+        Node first = null;
+        Node last = null;
+        Node p = root;
+        while (p != null) {
+            if (first == null) {
+                if (p.left != null)
+                    first = p.left;
+                else if (p.right != null)
+                    first = p.right;
+            }
+
+            if (p.left != null) {
+                if (last != null)
+                    last.next = p.left;
+                last = p.left;
+            }
+
+            if (p.right != null) {
+                if (last != null)
+                    last.next = p.right;
+
+                last = p.right;
+            }
+
+            if (p.next != null)
+                p = p.next;
+            else {
+                p = first;
+                first = null;
+                last = null;
+            }
+        }
+
+        return root;
+
+        /*
+        if (root == null)
+            return null;
+
+        Queue<Node> nodes = new LinkedList<Node>();
+        nodes.add(root);
+
+        Node pre = null;
+        Node nextLast = root;
+
+
+        while (!nodes.isEmpty()) {
+            Node temp = nodes.remove();
+            if (nodes.isEmpty() || nextLast == temp) {
+                temp.next = null;
+                nextLast = null;
+            } else {
+                temp.next = pre;
+            }
+
+            if (nextLast == null) {
+                if (temp.right != null) {
+                    nextLast = temp.right;
+                } else if (temp.left != null)
+                    nextLast = temp.left;
+            }
+
+            pre = temp;
+            if (temp.right != null)
+                nodes.add(temp.right);
+
+            if (temp.left != null)
+                nodes.add(temp.left);
+        }
+
+        return root;
+        */
+
+    }
+
+
+/*
+Convert Sorted List to Binary Search Tree
+Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+
+For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+
+Example:
+
+Given the sorted linked list: [-10,-3,0,5,9],
+
+One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:
+
+      0
+     / \
+   -3   9
+   /   /
+ -10  5
+ */
+
+    public TreeNode converSortedListToBST(ListNode head) {
+
+        return buildTreeNodeByListNode(head, null);
+    }
+
+    private TreeNode buildTreeNodeByListNode(ListNode start, ListNode end) {
+        if (start == end)
+            return null;
+
+        ListNode pre = start;
+        ListNode post = start;
+
+        while (pre != end && pre.next != end) {
+            pre = pre.next.next;
+            post = post.next;
+        }
+
+        TreeNode treeNode = new TreeNode(post.val);
+        treeNode.left = buildTreeNodeByListNode(start, post);
+        treeNode.right = buildTreeNodeByListNode(post.next, end);
+        return treeNode;
+    }
+
+     /*
+    Convert Sorted Array to Binary Search Tree
+     */
+
+    public TreeNode convertSortedArrayToBST(int[] nums) {
+        return buildTreeNodeByArray(nums, 0, nums.length);
+    }
+
+    private TreeNode buildTreeNodeByArray(int[] nums, int start, int end) {
+
+        if (start >= end)
+            return null;
+
+        int middle = (end + start) / 2;
+
+        TreeNode treeNode = new TreeNode(nums[middle]);
+        treeNode.left = buildTreeNodeByArray(nums, start, middle);
+        treeNode.right = buildTreeNodeByArray(nums, middle + 1, end);
+        return treeNode;
+    }
+}
+
