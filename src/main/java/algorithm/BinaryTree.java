@@ -484,7 +484,6 @@ Return false.
             result.add(new ArrayList<Integer>(sumList));
             //  return;
         }
-
         //        List<Integer> listLeft = new ArrayList<Integer>(sumList);
         //        List<Integer> listRight = new ArrayList<Integer>(sumList);
         traversePathSum(root.left, diff, sumList, result);
