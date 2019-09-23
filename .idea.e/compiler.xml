@@ -7,10 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="com.javaPractice.spingBoot" />
+        <module name="javaPracticeSpringBoot" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="com.javaPractice.spingBoot" target="1.6" />
-    </bytecodeTargetLevel>
   </component>
 </project>
