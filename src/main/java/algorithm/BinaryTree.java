@@ -469,12 +469,12 @@ Return false.
         if (root == null)
             return result;
 
-        reversePathSum(root, sum, new LinkedList<Integer>(), result);
+        traversePathSum(root, sum, new LinkedList<Integer>(), result);
 
         return result;
     }
 
-    public void reversePathSum(TreeNode root, int sum, Deque<Integer> sumList, List<List<Integer>> result) {
+    public void traversePathSum(TreeNode root, int sum, Deque<Integer> sumList, List<List<Integer>> result) {
         if (root == null)
             return;
 
@@ -487,8 +487,8 @@ Return false.
 
         //        List<Integer> listLeft = new ArrayList<Integer>(sumList);
         //        List<Integer> listRight = new ArrayList<Integer>(sumList);
-        reversePathSum(root.left, diff, sumList, result);
-        reversePathSum(root.right, diff, sumList, result);
+        traversePathSum(root.left, diff, sumList, result);
+        traversePathSum(root.right, diff, sumList, result);
         sumList.removeLast();
     }
 
@@ -818,5 +818,281 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
         treeNode.right = buildTreeNodeByArray(nums, middle + 1, end);
         return treeNode;
     }
+
+
+    /*
+    Given a binary tree, flatten it to a linked list in-place.
+
+For example, given the following tree:
+
+    1
+   / \
+  2   5
+ / \   \
+3   4   6
+The flattened tree should look like:
+
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+         \
+          6
+     */
+    public void flattenBinaryTreeToLinkedList_method1(TreeNode root) {
+        if (root == null)
+            return;
+
+        Stack<TreeNode> treeStack = new Stack<TreeNode>();
+        treeStack.push(root);
+        TreeNode parent = root;
+
+        while (!treeStack.isEmpty()) {
+            TreeNode peekNode = treeStack.pop();
+            if (peekNode.right != null)
+                treeStack.push(peekNode.right);
+
+            if (peekNode.left != null)
+                treeStack.push(peekNode.left);
+
+            if (peekNode == parent) {
+                continue;
+            }
+
+            parent.right = peekNode;
+            parent.left = null;
+            parent = peekNode;
+        }
+    }
+
+    public void flattenBinaryTreeToLinkedList_method2(TreeNode root) {
+        if (root == null)
+            return;
+
+        Stack<TreeNode> treeStack = new Stack<TreeNode>();
+        treeStack.push(root);
+        TreeNode parent = root;
+
+        while (!treeStack.isEmpty()) {
+            TreeNode peekNode = treeStack.pop();
+
+            TreeNode temp = peekNode;
+
+            if (temp != parent) {
+                parent.right = temp;
+                parent.left = null;
+                parent = temp;
+            }
+
+            while (temp.left != null) {
+                if (temp.right != null)
+                    treeStack.push(temp.right);
+                temp.right = temp.left;
+                temp.left = null;
+                temp = temp.right;
+                parent = temp;
+                continue;
+            }
+
+            if (temp.right != null)
+                treeStack.push(temp.right);
+        }
+    }
+
+
+    /*
+    Assume a BST is defined as follows:
+The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+     */
+    public boolean validateBinarySearchTree(TreeNode root) {
+        Integer minValue = Integer.MIN_VALUE;
+        Integer maxValue = Integer.MAX_VALUE;
+        return isValidBSTRecursive(root, minValue, maxValue);
+    }
+
+    private boolean isValidBSTRecursive(TreeNode root, Integer minValue, Integer maxValue) {
+        if (root == null)
+            return true;
+
+
+        int leftMinValue = minValue;
+        int leftMaxValue = root.val < maxValue ? root.val : maxValue;
+
+        int rightMinValue = root.val > minValue ? root.val : minValue;
+        int rightMaxValue = maxValue;
+
+        boolean leftResult = true;
+        boolean rightResult = true;
+
+        if (root.left != null)
+            leftResult = isValidBSTRecursive(root.left, leftMinValue, leftMaxValue);
+
+        if (root.right != null)
+            rightResult = isValidBSTRecursive(root.right, rightMinValue, rightMaxValue);
+
+        boolean rootVal = true;
+
+
+        if (root.val == Integer.MAX_VALUE) {
+            if (minValue >= Integer.MAX_VALUE)
+                rootVal = false;
+        } else if (root.val == Integer.MIN_VALUE) {
+            if (maxValue <= Integer.MIN_VALUE)
+                rootVal = false;
+        } else {
+            if (root.val >= maxValue || root.val <= minValue)
+                rootVal = false;
+        }
+
+        return leftResult && rightResult && rootVal;
+    }
+
+
+    public void recoverBinarySearchTree(TreeNode root) {
+        if (root == null)
+            return;
+
+        TreeNode p = root;
+        while (p != null) {
+            TreeNode left = p.left;
+            TreeNode right = p.right;
+            if (left == null && right == null)
+                return;
+
+            if (left != null && left.val > p.val) {
+                Integer temp = p.val;
+                p.val = left.val;
+                left.val = temp;
+                p = p.left;
+            }
+
+            if (right != null && right.val < p.val) {
+                Integer temp = p.val;
+                p.val = right.val;
+                right.val = temp;
+                p = p.right;
+            }
+        }
+    }
+
+
+    /*
+    Given a binary tree, return all root-to-leaf paths.
+
+Note: A leaf is a node with no children.
+
+Example:
+
+Input:
+
+   1
+ /   \
+2     3
+ \
+  5
+
+Output: ["1->2->5", "1->3"]
+
+Explanation: All root-to-leaf paths are: 1->2->5, 1->3
+     */
+
+    public List<String> binaryTreePaths(TreeNode root){
+
+        List<String> result = new ArrayList<String>();
+
+        StringBuilder temp = new StringBuilder("");
+        ReverseTreePreOrder(root,result,temp);
+        return result;
+    }
+
+    private void ReverseTreePreOrder(TreeNode root, List<String> result,StringBuilder temp) {
+
+        if (root == null)
+            return;
+
+        if(temp.length() == 0)
+            temp.append(root.val);
+        else
+           temp.append("->" + root.val);
+
+        if (root.left == null && root.right == null) {
+            result.add(temp.toString());
+            return;
+        }
+
+        if (root.left != null){
+            StringBuilder left = new StringBuilder(temp);
+            ReverseTreePreOrder(root.left, result, left);
+        }
+
+        if(root.right != null) {
+            StringBuilder right = new StringBuilder(temp);
+            ReverseTreePreOrder(root.right, result, right);
+        }
+    }
+
+
+
+    /*
+    Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number.
+
+An example is the root-to-leaf path 1->2->3 which represents the number 123.
+
+Find the total sum of all root-to-leaf numbers.
+
+Note: A leaf is a node with no children.
+
+Example:
+
+Input: [1,2,3]
+    1
+   / \
+  2   3
+Output: 25
+Explanation:
+The root-to-leaf path 1->2 represents the number 12.
+The root-to-leaf path 1->3 represents the number 13.
+Therefore, sum = 12 + 13 = 25.
+     */
+    public int SumRoottoLeafNumbers(TreeNode root){
+
+        List<Integer> result = new ArrayList<Integer>();
+        addSumForTree(root,0,result);
+
+        Integer finalResult = 0;
+
+        for(Integer data : result){
+            finalResult += data;
+        }
+
+        return finalResult;
+    }
+
+    private void addSumForTree(TreeNode root,int amount,List<Integer> result){
+        if (root == null)
+            return;
+
+        amount = amount * 10 + root.val;
+        if (root.left == null && root.right == null) {
+            result.add(amount);
+            return;
+        }
+
+        if (root.left != null){
+            addSumForTree(root.left, amount, result);
+        }
+
+        if(root.right != null) {
+            addSumForTree(root.right, amount, result);
+        }
+    }
+
 }
 

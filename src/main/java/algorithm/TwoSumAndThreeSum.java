@@ -14,6 +14,7 @@ You may assume that each input would have exactly one solution.
 Input: numbers={2, 7, 11, 15}, target=9 Output: index1=1, index2=2
  */
 public class TwoSumAndThreeSum {
+
     public int[] twoSum(int[] nums, int target) {
         if (nums == null || nums.length == 0)
             return null;
@@ -29,6 +30,25 @@ public class TwoSumAndThreeSum {
             }
 
         }
+        return new int[2];
+    }
+
+
+    public int[] twoSum_2(int[] nums, int target) {
+        if (nums == null || nums.length == 0)
+            return null;
+
+        HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();
+
+        for(int i=0;i<nums.length;i++){
+            int tmp = target - nums[i];
+
+            if(hm.containsKey(nums[i]))
+                return new int[]{hm.get(nums[i]),i};
+
+            hm.put(tmp,i);
+        }
+
         return new int[2];
     }
 
@@ -75,6 +95,11 @@ must not contain duplicate triplets.
                     --k;
             }
         }
+        return result;
+    }
+
+    public List<List<Integer>> threeSum_2(int[] nums) {
+        ArrayList<List<Integer>> result = new ArrayList<List<Integer>>();
         return result;
     }
 

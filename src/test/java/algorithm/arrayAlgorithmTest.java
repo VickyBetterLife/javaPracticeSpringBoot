@@ -65,6 +65,19 @@ public class arrayAlgorithmTest {
         cbt.constructTreeWithInorderAndPostOrder(inorder,postorder);
     }
 
+    @Test
+    public void validateBinarySearchTreeTest(){
+        TreeNode root = new TreeNode(Integer.MAX_VALUE);
+        TreeNode rightNode = new TreeNode(Integer.MAX_VALUE);
+        root.right = rightNode;
+        rightNode.left = null;
+        rightNode.right = null;
+        root.left = null;
+
+        BinaryTree cbt = new BinaryTree();
+        Assert.assertFalse(cbt.validateBinarySearchTree(root));
+    }
+
 //    @Test
 //    public void postOrder(){
 //        int[] treeNodes = {1,null,2,3};
