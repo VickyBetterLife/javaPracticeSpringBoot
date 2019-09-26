@@ -115,6 +115,60 @@ public class TreasureIsland {
         }
         return treasure;
     }
+
+    public int shortestPath(char[][] input){
+
+        if(input == null || input[0].length == 0)
+            return 0;
+
+        int row = input.length;
+        int col = input[0].length;
+        Location xLocation = findTreasurePoint(input);
+
+        if(xLocation == null)
+            return 0;
+
+        Location curLocation = new Location(0,0);
+
+        Queue<Location> ql = new LinkedList<Location>();
+
+        boolean[][] visited = new boolean[row][col];
+
+        int step =0;
+        visited[0][0]=true;
+        ((LinkedList<Location>) ql).add(curLocation);
+
+        while(!ql.isEmpty()){
+            int qSize = ql.size();
+
+            for(int i=0;i<qSize;i++){
+                Location tmp = ql.poll();
+                int x = tmp.x;
+                int y = tmp.y;
+
+                if(visited[x][y]) continue;
+                visited[x][y] = true;
+
+                if(input[x][y] == 'X'){
+                   return step;
+                }
+
+                if(x-1>0 && input[x-1][y] != 'D' && !visited[x-1][y])
+                    ((LinkedList<Location>) ql).add(new Location(x-1,y));
+
+                if(x+1 < row && input[x+1][y] != 'D' && !visited[x+1][y])
+                    ((LinkedList<Location>) ql).add(new Location(x+1,y));
+
+                if(y-1>0 && input[x][y-1] != 'D' && !visited[x][y-1])
+                    ((LinkedList<Location>) ql).add(new Location(x,y-1));
+
+                if(y+1<col && input[x][y+1] != 'D' && !visited[x][y+1])
+                    ((LinkedList<Location>) ql).add(new Location(x,y+1));
+
+            }
+        }
+        return 0;
+    }
 }
 
 
