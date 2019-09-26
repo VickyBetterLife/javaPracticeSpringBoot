@@ -53,22 +53,6 @@ import java.util.*;
 
 public class OptimalUtilization {
 
-    public List<Integer[]> optimalUtilization_1(List<Integer[]> a, List<Integer[]> b, int target) {
-        List<Integer[]> result = new ArrayList<Integer[]>();
-
-        for (int i = 0; i < a.size(); i++) {
-            int tmp = target - a.get(i)[1];
-            for (int j = 0; j < b.size(); j++) {
-                if (b.get(j)[1] <= tmp) {
-                    Integer[] pair = new Integer[]{a.get(i)[0], b.get(j)[0]};
-                    result.add(pair);
-                }
-            }
-        }
-
-        return result;
-    }
-
     public List<Integer[]> optimalUtilization_2(List<Integer[]> a, List<Integer[]> b, int target) {
         List<Integer[]> result = new ArrayList<Integer[]>();
 
