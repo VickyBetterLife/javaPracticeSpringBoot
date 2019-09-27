@@ -15,6 +15,10 @@ Input:
 
 Output: 5
 Explanation: Route is (0, 0), (0, 1), (1, 1), (2, 1), (2, 0), (3, 0) The minimum route takes 5 steps.
+Solution
+Java BFS: https://leetcode.com/playground/uQoVfEmr
+Time complexity: O(r * c).
+Space complexity: O(r * c).
  */
 
 
@@ -115,15 +119,67 @@ public class TreasureIsland {
         }
         return treasure;
     }
-}
 
+    public int minRouts_method3(char[][] input){
 
+        if(input == null || input[0].length == 0)
+            return 0;
 
+        int row = input.length;
+        int col = input[0].length;
+        Location xLocation = findTreasurePoint(input);
 
-class Location{
-    int x,y;
-    Location(int x,int y){
-        this.x = x;
-        this.y = y;
+        if(xLocation == null)
+            return 0;
+
+        Location curLocation = new Location(0,0);
+
+        Queue<Location> ql = new LinkedList<Location>();
+
+        boolean[][] visited = new boolean[row][col];
+
+        int step =0;
+        ql.add(curLocation);
+
+        while(!ql.isEmpty()){
+            int qSize = ql.size();
+
+            for(int i=0;i<qSize;i++){
+                Location tmp = ql.poll();
+                int x = tmp.x;
+                int y = tmp.y;
+
+                if(visited[x][y]) continue;
+
+                visited[x][y] = true;
+
+                if(input[x][y] == 'X'){
+                   return step;
+                }
+
+                if(x-1>=0 && input[x-1][y] != 'D' && !visited[x-1][y]) {
+                    ql.add(new Location(x - 1, y));
+                }
+
+                if(x+1 < row && input[x+1][y] != 'D' && !visited[x+1][y]) {
+                    ql.add(new Location(x + 1, y));
+                }
+
+                if(y-1>=0 && input[x][y-1] != 'D' && !visited[x][y-1]) {
+                    ql.add(new Location(x, y - 1));
+                }
+
+                if(y+1<col && input[x][y+1] != 'D' && !visited[x][y+1]) {
+                    ql.add(new Location(x, y + 1));
+                }
+
+            }
+            step++;
+        }
+        return 0;
     }
 }
+
+
+
+
