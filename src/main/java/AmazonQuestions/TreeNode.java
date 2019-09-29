@@ -1,11 +1,14 @@
-package algorithm;
+package AmazonQuestions;
+
+
+
 
 /**
  * Definition for a binary tree node.
  * **/
 public class TreeNode {
-    public int val;
-    public TreeNode left;
-    public TreeNode right;
+    int val;
+    algorithm.TreeNode left;
+    algorithm.TreeNode right;
     TreeNode(int x) { val = x; }
 }
